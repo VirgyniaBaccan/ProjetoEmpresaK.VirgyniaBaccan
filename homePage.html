@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./src/cssPages/reset.css">
+        <link rel="stylesheet" href="./src/cssPages/globalStyles.css">
+        <link rel="stylesheet" href="./src/cssPages/homePage.css">
+        <script defer type="module" src="./src/scripts/homePage.js"></script>
+        <title>Home Page</title>
+    </head>
+
+    <body>
+        <header class="header__container">
+            <nav class="nav__container">
+                <img src="./src/assets/logo.kenzie.svg" alt="logotipo" class="logo" />
+                <div>
+                    <button class="button__login">Login</button>
+                    <button class="button__register">Cadastro</button>
+                </div>
+            </nav>
+        </header>
+        <main class="main__container">
+            <div class="div__image">
+                <img src="./src/assets/men.background.png" alt="Homem trabalhando" class="img__background" />
+            </div>
+            <section class="section__select">
+
+                <select name="category" id="select">
+                    <option value="">Selecionar Setor</option>
+                </select>
+                <div class="div__list">
+                    <h1 class="list__title">Lista de Empresas</h1>
+                    <ul class="list">
+                        <!-- <li class="card">
+                            <h1 class="businessName">Empresa Name</h1>
+                            <p class="businessSector">Setor</p>
+                        </li> -->
+                    
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+    </body>
+
+    </html>

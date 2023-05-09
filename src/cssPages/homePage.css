@@ -1,0 +1,170 @@
+.main__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 70rem;
+    margin-top: 7rem;
+    height: 83vh;
+    gap: 1.25rem;
+
+}
+
+.div__image {
+    display: flex;
+    width: 50%;
+    height: 100%;
+
+}
+
+.img__background {
+    display: flex;
+    width: 90%;
+    height: 100%;
+    /* image-rendering: pixelated; */
+}
+
+.section__select {
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+    width: 50%;
+    gap: 1.5625rem;
+}
+
+.logo {
+    width: 12.71rem;
+    height: 1.3337rem;
+}
+
+#select {
+    display: flex;
+    align-items: center;
+    padding-left: 1.25rem;
+    border: 2px solid transparent;
+    top: 0;
+    width: 550px;
+    height: 3.3125rem;
+    color: var(--color-mode);
+
+    font-family: 'Poppins', sans-serif;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    outline: 0;
+    -webkit-appearance:none; 
+    background: var(--color-brand-1) url('../assets/Polygon\ 1.svg') 95.5% 50% no-repeat;
+    cursor: pointer;
+}
+
+.div__list {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-grey-5);
+
+
+    width: 100%;
+    height: 774px;
+    border: 1px solid var(--color-grey-5);
+    box-shadow: 0px 0px 35px 0px #00000038;
+
+}
+
+.list__title {
+
+    height: 39px;
+    margin: 1.5625rem;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    max-height: 27rem;
+    overflow: auto;
+    gap: .625rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 1.25rem;
+
+    border: 1.5px solid var(--color-brand-1);
+    width: 86%;
+    /* height: 500px; */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-left: 1.5625rem;
+    gap: 1.5rem;
+    background-color: var(--color-mode);
+}
+
+.businessName {
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #000000;
+}
+
+.businessSector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+    border: 1.5px solid #0000FF;
+    border-radius: 255px;
+    padding: 3px;
+    width: 110px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #0000FF;
+}
+
+button {
+    box-sizing: border-box;
+    width: 142px;
+    height: 48px;
+
+    background: var(--color-mode);
+    border: 1.5px solid var(--color-brand-1);
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+
+    color: #0000FF;
+    cursor: pointer;
+
+}
+
+button:hover {
+    background-color: var(--color-brand-1);
+    color: var(--color-mode);
+}

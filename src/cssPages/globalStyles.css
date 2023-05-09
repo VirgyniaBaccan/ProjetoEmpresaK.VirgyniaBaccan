@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+/* font-family: 'Inter', sans-serif;*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+/* font-family: 'Poppins', sans-serif; */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+/* font-family: 'Roboto', sans-serif; */
+
+:root {
+    --color-brand-1: #0000FF;
+    --color-brand-2: #3532FF;
+
+    --color-action-1: #36B37E;
+    --color-action-2: #FF5630;
+    --color-action-3: #FFAB00;
+
+    --color-grey-1: #212529;
+    --color-grey-2: #495057;
+    --color-grey-3: #ADB5BD;
+    --color-grey-4: #E9ECEF;
+    --color-grey-5: #F1F3F5;
+
+    --color-mode: #FFFFFF;
+
+    --size-title: 2rem;
+    --size-title1: 1.25rem;
+    --size-title2: 1rem;
+    --size-text1: .875rem;
+    --size-text2: .75rem;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    background-color: var(--color-grey-5);
+
+}
+
+.header__container {
+   display: flex;
+   position: fixed;
+   justify-content: center;
+   align-items: center;
+   height: 5rem;
+   width: 100%;
+
+   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav__container {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 70rem;
+    height: 5rem;
+
+}

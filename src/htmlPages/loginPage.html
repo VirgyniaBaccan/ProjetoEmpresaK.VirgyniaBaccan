@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../cssPages/reset.css">
+    <link rel="stylesheet" href="../cssPages/globalStyles.css">
+    <link rel="stylesheet" href="../cssPages/loginPage.css">
+    <script defer type="module" src="../scripts/loginPage.js"></script>
+    <title>Login Page</title>
+</head>
+
+<body>
+    <header class="header__container">
+        <nav class="nav__container">
+            <img src="../assets/logo.kenzie.svg" alt="logotipo" class="logo" />
+            <div>
+                <button class="button__home">Home</button>
+                <button class="button__register">Cadastro</button>
+            </div>
+        </nav>
+    </header>
+    <main class="main__container">
+        <section class="section__login">
+            <div class="div__login">
+                <h1 class="title__login">Login</h1>
+                <p class="text__login">Preencha os campos para realizar login</p>
+                <input class="input__login" type="email" placeholder="Seu e-mail" />
+                <input class="input__login" type="password" placeholder="Sua senha">
+            </div>
+            <div class="div__buttons">
+                <button class="button__form" type="submit">Login</button>
+                <p class="text__login">ou</p>
+                <button class="button__register" id="button__form">Cadastre-se</button>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

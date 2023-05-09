@@ -1,0 +1,112 @@
+.main__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../assets/picture.loginPage.svg");
+    width: 100%;
+    height: 100vh;
+    margin-top: 80px;
+    position: fixed;
+}
+
+.section__login {
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 26rem;
+    height: 25rem;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.div__login {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 60%;
+    gap: 10px;
+}
+
+.title__login {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 60px;
+
+    color: #000000;
+}
+
+.text__login {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+
+    color: #000000;
+}
+
+.input__login {
+    box-sizing: border-box;
+
+    width: 416px;
+    height: 52px;
+
+    background: var(--color-mode);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    padding-left: 10px;
+  
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.div__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    height: 40%;
+}
+
+button {
+    box-sizing: border-box;
+    width: 142px;
+    height: 48px;
+
+    background: var(--color-mode);
+    border: 1.5px solid var(--color-brand-1);
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+
+    color: var(--color-brand-1);
+    cursor: pointer;
+
+}
+
+button:hover {
+    background-color: var(--color-brand-1);
+    color: var(--color-mode);
+}
+
+.button__form {
+    width: 100%;
+}
+
+#button__form {
+    width: 100%;
+}
