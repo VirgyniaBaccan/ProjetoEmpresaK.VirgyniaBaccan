@@ -31,11 +31,9 @@ export async function renderCards(firstTime, array) {
 
     } else {
    
-    // const companies = await getCompanyByCategory()
-        console.log(array)
     array.forEach(async (element) => {
         const card = await createCard(element)
-        console.log(card)
+       
         list.appendChild(card)
     })
 }

@@ -1,5 +1,5 @@
 import { renderCards, renderSelect } from "./render.js"
-import { changeSelect, getCompanyByCategory } from "./requests.js"
+import { changeSelect } from "./requests.js"
 // import { loginRequest } from "./requests.js"
 
 
@@ -22,8 +22,6 @@ function homeChangePages() {
 
 homeChangePages()
 
-
-getCompanyByCategory()
 
 changeSelect()
 

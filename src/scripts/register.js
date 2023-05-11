@@ -1,4 +1,4 @@
-import { registerRequest } from "./requests.js"
+import { bodyRegister } from "./requests.js"
 
 function registerChangePages() {
     const buttonHome = document.querySelectorAll(".button__home")
@@ -15,4 +15,7 @@ function registerChangePages() {
 }
 registerChangePages()
 
-registerRequest()
+
+
+bodyRegister()
+
