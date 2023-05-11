@@ -3,8 +3,12 @@ import { toast } from "./toasts.js"
 
 
 const baseUrl = `http://localhost:3333/`
-const requestsHeader = {
-        'Content-Type': 'application/json'
+const token = JSON.parse(localStorage.getItem("@kenz.emp:token"))
+console.log(token)
+const requestHeaders = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+
 }
 
 const green = '#36B37E';
@@ -61,18 +65,18 @@ export async function loginRequest(loginBody) {
 
         const tokenLogin = await fetch(`${baseUrl}auth/login`, {
                 method: 'POST',
-                headers: requestsHeader,
+                headers: requestHeaders,
                 body: JSON.stringify(loginBody)
         })
                 .then(async (response) => {
                         if (response.ok) {
 
                                 const responseJson = await response.json()
-                                const token = responseJson.authToken
+                                const token = JSON.stringify(responseJson.authToken)
 
                                 if (responseJson.isAdm) {
 
-                                        JSON.stringify(localStorage.setItem('@kenz.emp:token', token))
+                                        localStorage.setItem('@kenz.emp:token', token)
 
                                         toast('Login realizado com sucesso', green)
 
@@ -82,7 +86,7 @@ export async function loginRequest(loginBody) {
 
                                 } else {
 
-                                        JSON.stringify(localStorage.setItem('@kenz.emp:token', token))
+                                        localStorage.setItem('@kenz.emp:token', token)
 
                                         toast('Login realizado com sucesso', green)
 
@@ -137,7 +141,7 @@ export async function registerRequest(registerBody) {
 
         const newRegister = await fetch(`${baseUrl}employees/create`, {
                 method: 'POST',
-                headers: requestsHeader,
+                headers: requestHeaders,
                 body: JSON.stringify(registerBody)
         })
                 .then(async (response) => {
@@ -159,34 +163,56 @@ export async function registerRequest(registerBody) {
                                 toast(responseJson.message, red)
                         }
                 })
-                return newRegister
-        }
+        return newRegister
+}
 
 
 export function bodyRegister() {
-                const inputs = document.querySelectorAll(".input__register")
-                const button = document.querySelector("#button__register")
+        const inputs = document.querySelectorAll(".input__register")
+        const button = document.querySelector("#button__register")
 
-                let registerBody = {}
-                let count = 0
+        let registerBody = {}
+        let count = 0
 
-                button.addEventListener('click', async (event) => {
-                        event.preventDefault()
+        button.addEventListener('click', async (event) => {
+                event.preventDefault()
 
-                        inputs.forEach(input => {
-                                if (input.value.trim() === '') {
-                                        count++
-                                }
-
-                                registerBody[input.name] = input.value
-                        })
-
-                        if (count !== 0) {
-                                count = 0
-                                toast("Por favor, preencha os campos necessários", red)
-                        } else {
-                                return registerRequest(registerBody)
+                inputs.forEach(input => {
+                        if (input.value.trim() === '') {
+                                count++
                         }
+
+                        registerBody[input.name] = input.value
                 })
 
-        }
+                if (count !== 0) {
+                        count = 0
+                        toast("Por favor, preencha os campos necessários", red)
+                } else {
+                        return registerRequest(registerBody)
+                }
+        })
+
+}
+
+
+export async function getEmployeesProfile() {
+        const employeeProfile = await fetch(`${baseUrl}employees/profile`, {
+                method: 'GET',
+                headers: requestHeaders
+        })
+                .then(response => response.json())
+        console.log(employeeProfile)
+        return employeeProfile
+}
+
+
+export async function getDepartmentById(departmentId) {
+        const departmentById = await fetch(`${baseUrl}departments/readById/${departmentId}`, {
+                method: 'GET',
+                headers: requestHeaders
+        })
+        .then(response => response.json())
+        return departmentById
+
+}
