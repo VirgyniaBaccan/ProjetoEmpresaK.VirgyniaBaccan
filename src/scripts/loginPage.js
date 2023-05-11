@@ -1,3 +1,4 @@
+import { bodyLogin } from "./requests.js"
 
 function loginChangePages() {
     const buttonHome = document.querySelector(".button__home")
@@ -6,11 +7,14 @@ function loginChangePages() {
     })
 
     
-    const buttonRegister = document.querySelectorAll(".button__register")
+    const buttonRegister = document.querySelectorAll("#button__register")
     buttonRegister.forEach((button) => {
     button.addEventListener('click', () => {
         window.location.replace("./registerPage.html")
     })
 })
 }
+
 loginChangePages()
+
+bodyLogin()

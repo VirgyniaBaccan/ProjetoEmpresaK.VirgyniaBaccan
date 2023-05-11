@@ -1,4 +1,4 @@
-import { getAllCategories, getCompanyByCategory, getAllCompanies} from "./requests.js";
+import { getAllCategories,  getAllCompanies} from "./requests.js";
 
 const baseUrl = `http://localhost:3333/`
 

@@ -1,3 +1,5 @@
+import { registerRequest } from "./requests.js"
+
 function registerChangePages() {
     const buttonHome = document.querySelectorAll(".button__home")
     buttonHome.forEach((button) => {
@@ -12,3 +14,5 @@ function registerChangePages() {
     })
 }
 registerChangePages()
+
+registerRequest()

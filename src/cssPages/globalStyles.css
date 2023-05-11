@@ -62,3 +62,29 @@ body {
     height: 5rem;
 
 }
+
+
+.toast__container {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+
+    padding: 2rem;
+
+    animation: toastIn 2s linear;
+
+    z-index: 0;
+}
+
+.toast__container > p {
+    color: var(--color-mode);
+}
+
+.toast__add {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.toast__remove {
+    animation: toastOut 2s linear;
+}

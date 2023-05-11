@@ -91,7 +91,7 @@
 .list {
     display: flex;
     flex-direction: column;
-    max-height: 27rem;
+    max-height: 29rem;
     overflow: auto;
     gap: .625rem;
 }
@@ -168,3 +168,4 @@ button:hover {
     background-color: var(--color-brand-1);
     color: var(--color-mode);
 }
+
