@@ -4,7 +4,7 @@ function registerChangePages() {
     const buttonHome = document.querySelectorAll(".button__home")
     buttonHome.forEach((button) => {
         button.addEventListener('click', () => {
-            window.location.replace("/homePage.html")
+            window.location.replace("/index.html")
         })
     })
 

@@ -5,7 +5,7 @@ function authenticationToken() {
     const token = localStorage.getItem("@kenz.emp:token")
 
     if (!token) {
-        window.location.replace("/homePage.html");
+        window.location.replace("/index.html");
     }
 }
 authenticationToken()
@@ -25,7 +25,7 @@ function homeReturn() {
     buttonLogout.addEventListener('click', () => {
         localStorage.removeItem("@kenz.emp:token")
         localStorage.removeItem("isAdm")
-        window.location.replace("/homePage.html")
+        window.location.replace("/index.html")
     })
 }
 

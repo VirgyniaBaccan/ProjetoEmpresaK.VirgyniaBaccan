@@ -3,7 +3,7 @@ import { bodyLogin } from "./requests.js"
 function loginChangePages() {
     const buttonHome = document.querySelector(".button__home")
     buttonHome.addEventListener('click', () => {
-        window.location.replace("/homePage.html")
+        window.location.replace("/index.html")
     })
 
     

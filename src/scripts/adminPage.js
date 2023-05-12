@@ -3,7 +3,7 @@ function authentication() {
     const token = localStorage.getItem("@kenz.emp:token");
 
     if (!token) {
-        location.replace("/homePage.html");
+        location.replace("/index.html");
     }
 }
 authentication()
@@ -22,7 +22,7 @@ function homeReturn() {
     buttonLogout.addEventListener('click', () => {
         localStorage.removeItem("@kenz.emp:token")
         localStorage.removeItem("isAdm")
-        window.location.replace("/homePage.html")
+        window.location.replace("/index.html")
     })
 }
 homeReturn()
