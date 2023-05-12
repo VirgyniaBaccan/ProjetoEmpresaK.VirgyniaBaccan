@@ -1,4 +1,4 @@
-import { getAllCategories,  getAllCompanies} from "./requests.js";
+import { getAllCategories,  getAllCompanies, getEmployeesProfile, getDepartmentById} from "./requests.js";
 
 const baseUrl = `http://localhost:3333/`
 
@@ -17,7 +17,7 @@ export async function renderSelect() {
 }
 
 export async function renderCards(firstTime, array) {
-    const list = document.querySelector(".list")
+    const list = document.querySelector(".list__home")
 
     list.innerHTML = ''
 
@@ -56,4 +56,75 @@ async function createCard(company) {
 
     card.append(cardName, cardSector)
     return card
+}
+
+
+export async function renderUser() {
+    const userInfos = await getEmployeesProfile()
+
+    const userSection = document.querySelector(".section__user")
+    const username = document.createElement("h1")
+    const userMail = document.createElement("p")
+
+    username.innerText = userInfos.name
+    userMail.innerText = userInfos.email
+
+    username.classList.add("user__name")
+    userMail.classList.add("user__mail")
+
+    userSection.append(username, userMail)
+
+}
+
+export async function renderDepartment() {
+    const userInfos = await getEmployeesProfile()
+    const sectionCompany = document.querySelector(".section__company")
+
+    if (!userInfos.company_id) { 
+        const message = document.createElement("h1")
+        const divMessage = document.createElement("div")
+       
+        message.innerText = "Você ainda não foi contratado"
+
+        message.classList.add("message__notHired")
+        divMessage.classList.add("div__message")
+
+        divMessage.appendChild(message)
+        sectionCompany.appendChild(divMessage)
+
+    } else {
+
+        const depId = userInfos.department_id
+        const department = await getDepartmentById(depId)
+        const employeesList = department.employees
+        
+        const divUserCompany = document.createElement("div")
+        const companyDepName = document.createElement("h1")
+
+        companyDepName.innerText = `${department.company.name} - ${department.name}`
+
+        divUserCompany.classList.add("header__company")
+        companyDepName.classList.add("title__company")
+        
+        divUserCompany.appendChild(companyDepName)
+        sectionCompany.appendChild(divUserCompany)
+
+        const list = document.createElement("ul")
+        list.classList.add("list__employees")
+        employeesList.forEach(employee => {
+            const card = document.createElement("li")
+            const name = document.createElement("h1")
+
+            name.innerText = employee.name
+
+            card.classList.add("card__employee")
+            name.classList.add("name__employee")
+
+            card.appendChild(name)
+            list.appendChild(card)
+            sectionCompany.appendChild(list)
+
+        })
+    }
+
 }

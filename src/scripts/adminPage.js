@@ -1,19 +1,27 @@
 
+function authentication() {
+    const token = localStorage.getItem("@kenz.emp:token");
 
-// function authentication() {
-//     const token = localStorage.getItem('@kenz.emp:token')
+    if (!token) {
+        location.replace("/homePage.html");
+    }
+}
+authentication()
 
-//     if(!token) {
-//         location.replace('./loginPage.html')
+// function authenticationAdm() {
+//     const adm = localStorage.getItem("isAdm")
+
+//     if(adm !== true) {
+//         location.replace("./userPage.html")
 //     }
 // }
-
-// authentication()
+// authenticationAdm()
 
 function homeReturn() {
     const buttonLogout = document.querySelector(".button__logout")
     buttonLogout.addEventListener('click', () => {
         localStorage.removeItem("@kenz.emp:token")
+        localStorage.removeItem("isAdm")
         window.location.replace("/homePage.html")
     })
 }

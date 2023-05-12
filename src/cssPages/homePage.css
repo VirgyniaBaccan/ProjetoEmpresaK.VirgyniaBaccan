@@ -88,10 +88,10 @@
     color: #000000;
 }
 
-.list {
+.list__home {
     display: flex;
     flex-direction: column;
-    max-height: 29rem;
+    max-height: 27rem;
     overflow: auto;
     gap: .625rem;
 }

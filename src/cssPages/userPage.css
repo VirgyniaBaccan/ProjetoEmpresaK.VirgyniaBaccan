@@ -1,22 +1,32 @@
+body {
+    background-color: #FFFFFF;;
+}
+
+
 .main__container {
 
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 5px;
+    flex-direction: column;
     width: 100%;
-    height: 100vh;
-    margin-top: 80px;
+    height: 90vh;
+    margin-top: 100px;
     position: fixed;
     max-width: 70rem;
+    background: #FFFFFF;
+
 }
 
 .section__user {
-  
+
     display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
     width: 100%;
-    height: 80px;
-    margin-top: 30px;
-    margin-bottom: 50px;
-    padding: 20px;
+    height: 150px;
+    margin-top: 10px;
+    margin-bottom: 15px;
     flex-direction: column;
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -25,6 +35,8 @@
 
     font-family: 'Inter';
     font-style: bolder;
+    margin-left: 20px;
+    margin-top: 5px;
     font-weight: 700;
     font-size: 30px;
     line-height: 36px;
@@ -39,6 +51,8 @@
     font-weight: 400;
     font-size: 22px;
     line-height: 27px;
+    margin-top: 10px;
+    margin-left: 20px;
 
     color: #000000;
 }
@@ -66,4 +80,103 @@ button {
 button:hover {
     background-color: var(--color-brand-1);
     color: var(--color-mode);
+}
+
+
+.section__company {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 50px;
+
+    flex-direction: column;
+
+    background: #F8F8F8;
+
+}
+
+.header__company {
+    display: flex;
+    /* position: absolute; */
+    width: 100%;
+    height: 78px;
+    justify-content: center;
+    align-items: center;
+    /* left: 141px; */
+    /* top: 280px; */
+
+    background: #0000FF;
+}
+
+.title__company {
+
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+.list__employees {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    max-height: 80%;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 30px;
+    height: 100%;
+    
+}
+
+.card__employee {
+    box-sizing: border-box;
+    width: 300px;
+    height: 100px;
+
+    background: #FFFFFF;
+    border: 1px solid #0000FF;
+
+}
+
+.name__employee {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #000000;
+    margin: 10px;
+}
+
+.div__message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    background: #F8F8F8;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+   
+
+}
+
+.message__notHired {
+    font-family: 'Inter';
+    font-style: bolder;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-weight: 1000;
+    font-size: 30px;
+    line-height: 36px;
+
+    color: #000000;
 }

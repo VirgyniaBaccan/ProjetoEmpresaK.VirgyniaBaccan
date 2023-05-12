@@ -3,7 +3,6 @@ import { changeSelect } from "./requests.js"
 // import { loginRequest } from "./requests.js"
 
 
-
 renderSelect()
 
 renderCards(true)

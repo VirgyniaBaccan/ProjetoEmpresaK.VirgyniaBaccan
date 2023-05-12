@@ -1,10 +1,9 @@
 import { renderCards } from "./render.js"
 import { toast } from "./toasts.js"
 
-
 const baseUrl = `http://localhost:3333/`
 const token = JSON.parse(localStorage.getItem("@kenz.emp:token"))
-console.log(token)
+
 const requestHeaders = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
@@ -41,7 +40,6 @@ export async function getCompanyByCategory(value) {
         return companiesFiltered
 }
 
-
 export function changeSelect() {
         const select = document.querySelector("#select")
 
@@ -60,7 +58,6 @@ export function changeSelect() {
 
 }
 
-
 export async function loginRequest(loginBody) {
 
         const tokenLogin = await fetch(`${baseUrl}auth/login`, {
@@ -77,6 +74,7 @@ export async function loginRequest(loginBody) {
                                 if (responseJson.isAdm) {
 
                                         localStorage.setItem('@kenz.emp:token', token)
+                                        JSON.stringify(localStorage.setItem('isAdm', responseJson.isAdm))
 
                                         toast('Login realizado com sucesso', green)
 
@@ -87,6 +85,7 @@ export async function loginRequest(loginBody) {
                                 } else {
 
                                         localStorage.setItem('@kenz.emp:token', token)
+                                        JSON.stringify(localStorage.setItem('isAdm', responseJson.isAdm))
 
                                         toast('Login realizado com sucesso', green)
 
@@ -104,7 +103,6 @@ export async function loginRequest(loginBody) {
         return tokenLogin
 }
 
-
 export function bodyLogin() {
 
         const inputs = document.querySelectorAll(".input__login")
@@ -117,7 +115,7 @@ export function bodyLogin() {
                 event.preventDefault()
 
                 inputs.forEach(input => {
-                        if (input.value.trim === '') {
+                        if (input.value.trim() === '') {
                                 count++
                         }
 
@@ -126,7 +124,7 @@ export function bodyLogin() {
 
                 if (count !== 0) {
                         count = 0
-                        return toast('Por favor, preencha os campos necessários', red)
+                        toast('Por favor, preencha os campos necessários', red)
                 } else {
                         const token = await loginRequest(loginBody)
 
@@ -135,7 +133,6 @@ export function bodyLogin() {
         })
 
 }
-
 
 export async function registerRequest(registerBody) {
 
@@ -166,7 +163,6 @@ export async function registerRequest(registerBody) {
         return newRegister
 }
 
-
 export function bodyRegister() {
         const inputs = document.querySelectorAll(".input__register")
         const button = document.querySelector("#button__register")
@@ -195,17 +191,15 @@ export function bodyRegister() {
 
 }
 
-
 export async function getEmployeesProfile() {
         const employeeProfile = await fetch(`${baseUrl}employees/profile`, {
                 method: 'GET',
                 headers: requestHeaders
         })
                 .then(response => response.json())
-        console.log(employeeProfile)
+        
         return employeeProfile
 }
-
 
 export async function getDepartmentById(departmentId) {
         const departmentById = await fetch(`${baseUrl}departments/readById/${departmentId}`, {
