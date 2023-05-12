@@ -10,6 +10,14 @@ function authenticationToken() {
 }
 authenticationToken()
 
+function authenticationAdm() {
+    const adm = JSON.parse(localStorage.getItem("isAdm"))
+
+    if(adm) {
+        location.replace("./adminPage.html")
+    }
+}
+authenticationAdm()
 
 
 function homeReturn() {

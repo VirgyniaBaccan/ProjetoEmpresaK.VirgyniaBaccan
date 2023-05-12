@@ -8,14 +8,14 @@ function authentication() {
 }
 authentication()
 
-// function authenticationAdm() {
-//     const adm = localStorage.getItem("isAdm")
+function authenticationAdm() {
+    const adm = JSON.parse(localStorage.getItem("isAdm"))
 
-//     if(adm !== true) {
-//         location.replace("./userPage.html")
-//     }
-// }
-// authenticationAdm()
+    if(adm !== true) {
+        location.replace("./userPage.html")
+    }
+}
+authenticationAdm()
 
 function homeReturn() {
     const buttonLogout = document.querySelector(".button__logout")
