@@ -21,6 +21,7 @@ function authenticationUser() {
     }
 }
 
+
 function homeReturn() {
     const buttonLogout = document.querySelector(".button__logout")
     buttonLogout.addEventListener('click', () => {

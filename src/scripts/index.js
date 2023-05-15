@@ -1,6 +1,5 @@
 import { renderCards, renderSelect } from "./render.js"
 import { changeSelect } from "./requests.js"
-// import { loginRequest } from "./requests.js"
 
 authenticationUser()
 
@@ -8,9 +7,11 @@ renderSelect()
 
 renderCards(true)
 
+
 homeChangePages()
 
 changeSelect()
+
 
 function authenticationUser() {
     const token = localStorage.getItem("@kenz.emp:token")

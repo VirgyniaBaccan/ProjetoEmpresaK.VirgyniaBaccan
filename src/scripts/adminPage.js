@@ -1,4 +1,4 @@
-import { renderSelectAdmin, renderDepCards, createEmployeeCard, handleCreateDepModal, renderUpdateModal} from "./render.js";
+import { renderSelectAdmin, renderDepCards, createEmployeeCard, handleCreateDepModal, renderUpdateModal } from "./render.js";
 import { changeDepSelect, getAllEmployees } from "./requests.js";
 
 homeReturn()
@@ -26,17 +26,17 @@ function authentication() {
     }
 }
 
-function homeReturn() {
-    const buttonLogout = document.querySelector(".button__logout")
-    buttonLogout.addEventListener('click', () => {
-        localStorage.removeItem("@kenz.emp:token")
-        localStorage.removeItem("isAdm")
-        window.location.replace("/index.html")
-    })
-}
+    function homeReturn() {
+        const buttonLogout = document.querySelector(".button__logout")
+        buttonLogout.addEventListener('click', () => {
+            localStorage.removeItem("@kenz.emp:token")
+            localStorage.removeItem("isAdm")
+            window.location.replace("/index.html")
+        })
+    }
 
-handleCreateDepModal()
+    handleCreateDepModal()
 
-getAllEmployees()
+    getAllEmployees()
 
-renderUpdateModal()
+    renderUpdateModal()
