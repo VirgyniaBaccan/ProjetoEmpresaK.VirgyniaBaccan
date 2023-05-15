@@ -15,11 +15,11 @@ function authenticationUser() {
 
     if (!token) {
         window.location.replace("/index.html");
-        if (adm) {
-            location.replace("./adminPage.html")
-        }
+    } else if (adm) {
+        location.replace("./adminPage.html")
     }
 }
+
 
 
 function homeReturn() {

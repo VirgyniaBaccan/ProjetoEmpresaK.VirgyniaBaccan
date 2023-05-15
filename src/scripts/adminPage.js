@@ -20,23 +20,22 @@ function authentication() {
 
     if (!token) {
         location.replace("/index.html");
-        if (adm !== true) {
-            location.replace("./userPage.html")
-        }
+    } else if (adm !== true) {
+        location.replace("./userPage.html")
     }
 }
 
-    function homeReturn() {
-        const buttonLogout = document.querySelector(".button__logout")
-        buttonLogout.addEventListener('click', () => {
-            localStorage.removeItem("@kenz.emp:token")
-            localStorage.removeItem("isAdm")
-            window.location.replace("/index.html")
-        })
-    }
+function homeReturn() {
+    const buttonLogout = document.querySelector(".button__logout")
+    buttonLogout.addEventListener('click', () => {
+        localStorage.removeItem("@kenz.emp:token")
+        localStorage.removeItem("isAdm")
+        window.location.replace("/index.html")
+    })
+}
 
-    handleCreateDepModal()
+handleCreateDepModal()
 
-    getAllEmployees()
+getAllEmployees()
 
-    renderUpdateModal()
+renderUpdateModal()

@@ -1,0 +1,11 @@
+#modal__create-dep {
+    width: 506px;
+    height: 402px;
+}
+
+.modal__create-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
