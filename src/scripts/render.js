@@ -152,7 +152,7 @@ export async function createDepCard(department) {
     const cardNameCia = document.createElement("p")
     const divButtons = document.createElement("div")
     const viewButton = document.createElement("img")
-    const editButton = document.createElement("img")
+    const editButtonDep = document.createElement("img")
     const deleteButton = document.createElement("img")
 
 
@@ -163,7 +163,7 @@ export async function createDepCard(department) {
     cardDepDescription.innerText = department.description
     cardNameCia.innerText = companyName
     viewButton.src = "../assets/eye.vector.svg"
-    editButton.src = "../assets/pencil.vector.svg"
+    editButtonDep.src = "../assets/pencil.vector.svg"
     deleteButton.src = "../assets/trash.vector.svg"
 
     card.classList.add("card__container")
@@ -173,13 +173,13 @@ export async function createDepCard(department) {
     divText.classList.add("div__text")
     divButtons.classList.add("div__buttons")
     viewButton.classList.add("view__button")
-    editButton.classList.add("edit__button")
+    editButtonDep.classList.add("edit__button-dep")
     deleteButton.classList.add("delete__button")
-    editButton.id = department.id
+    editButtonDep.id = department.id
 
     card.append(divText, divButtons)
     divText.append(cardDepName, cardDepDescription, cardNameCia)
-    divButtons.append(viewButton, editButton, deleteButton)
+    divButtons.append(viewButton, editButtonDep, deleteButton)
     return card
 }
 
@@ -283,7 +283,7 @@ export async function createEmployeeCard() {
             cardNameCia.classList.add("card__dep-text")
             divText.classList.add("div__text")
             divButtons.classList.add("div__buttons")
-            editButton.classList.add("edit__button")
+            editButton.classList.add("edit__buttonEmp")
             deleteButton.classList.add("delete__button")
             editButton.id = element.id
             deleteButton.id = element.id
@@ -330,7 +330,7 @@ export async function createEmployeeCard() {
 
 export function renderUpdateModal() {
     const modalUpdate = document.querySelector("#modal__edit-dep")
-    const buttonEdit = document.querySelectorAll(".edit__button")
+    const buttonEdit = document.querySelectorAll(".edit__button-dep")
     
     buttonEdit.forEach(element => {
         element.addEventListener('click', async () => {
