@@ -1,24 +1,25 @@
 import { renderUser, renderDepartment } from "./render.js"
 // import { getEmployeesProfile, getDepartmentById } from "./requests.js"
 
-function authenticationToken() {
+authenticationUser()
+
+homeReturn()
+
+renderUser()
+
+await renderDepartment()
+
+function authenticationUser() {
     const token = localStorage.getItem("@kenz.emp:token")
+    const adm = JSON.parse(localStorage.getItem("isAdm"))
 
     if (!token) {
         window.location.replace("/index.html");
+        if (adm) {
+            location.replace("./adminPage.html")
+        }
     }
 }
-authenticationToken()
-
-function authenticationAdm() {
-    const adm = JSON.parse(localStorage.getItem("isAdm"))
-
-    if(adm) {
-        location.replace("./adminPage.html")
-    }
-}
-authenticationAdm()
-
 
 function homeReturn() {
     const buttonLogout = document.querySelector(".button__logout")
@@ -28,9 +29,3 @@ function homeReturn() {
         window.location.replace("/index.html")
     })
 }
-
-homeReturn()
-
-renderUser()
-
-await renderDepartment()

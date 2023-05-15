@@ -38,6 +38,7 @@ body {
     font-family: "Inter", sans-serif;
     font-style: normal;
     background-color: var(--color-grey-5);
+    overflow: auto;
 
 }
 
@@ -48,6 +49,7 @@ body {
    align-items: center;
    height: 5rem;
    width: 100%;
+   background-color: var(--color-grey-5);
 
    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }

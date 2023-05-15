@@ -1,21 +1,30 @@
+import { renderSelectAdmin, renderDepCards, createEmployeeCard, handleCreateDepModal, renderUpdateModal} from "./render.js";
+import { changeDepSelect, getAllEmployees } from "./requests.js";
+
+homeReturn()
+
+authentication()
+
+await renderSelectAdmin()
+
+renderDepCards(true)
+
+await createEmployeeCard()
+
+changeDepSelect()
 
 function authentication() {
     const token = localStorage.getItem("@kenz.emp:token");
+    const adm = JSON.parse(localStorage.getItem("isAdm"))
+
 
     if (!token) {
         location.replace("/index.html");
+        if (adm !== true) {
+            location.replace("./userPage.html")
+        }
     }
 }
-authentication()
-
-function authenticationAdm() {
-    const adm = JSON.parse(localStorage.getItem("isAdm"))
-
-    if(adm !== true) {
-        location.replace("./userPage.html")
-    }
-}
-authenticationAdm()
 
 function homeReturn() {
     const buttonLogout = document.querySelector(".button__logout")
@@ -25,4 +34,9 @@ function homeReturn() {
         window.location.replace("/index.html")
     })
 }
-homeReturn()
+
+handleCreateDepModal()
+
+getAllEmployees()
+
+renderUpdateModal()

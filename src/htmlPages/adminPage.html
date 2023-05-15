@@ -1,23 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../cssPages/reset.css">
-        <link rel="stylesheet" href="../cssPages/globalStyles.css">
-        <script defer type="module" src="../scripts/adminPage.js"></script>
-        <title>Admin Page</title>
-    </head>
-    <body>
-        <header class="header__container">
-            <nav class="nav__container">
-                <img src="../assets/logo.kenzie.svg" alt="logotipo" class="logo" />
-                <div>
-                    <button class="button__logout">Logout</button>
-                </div>
-            </nav>
-        </header>
-        
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../cssPages/reset.css">
+    <link rel="stylesheet" href="../cssPages/globalStyles.css">
+    <link rel="stylesheet" href="../cssPages/adminPage.css">
+    <script defer type="module" src="../scripts/adminPage.js"></script>
+    <title>Admin Page</title>
+</head>
+
+<body>
+    <header class="header__container">
+        <nav class="nav__container">
+            <img src="../assets/logo.kenzie.svg" alt="logotipo" class="logo" />
+            <div>
+                <button class="button__logout">Logout</button>
+            </div>
+        </nav>
+    </header>
+    <main class="main__container">
+        <div class="div__select">
+            <select name="category" id="select__company">
+                <option value="">Selecionar Empresa</option>
+            </select>
+        </div>
+
+        <div class="div__create-dep">
+            <h2 class="title__dep">Departamentos</h2>
+            <button class="button__openCreateModal">+ Criar</button>
+        </div>
+
+        <div>
+            <ul class="list__departments">
+
+            </ul>
+
+        </div>
+
+        <div class="title__users">
+            <h2>Usuários Cadastrados</h2>
+        </div>
+
+        <div>
+            <ul class="list__employees">
+
+            </ul>
+
+        </div>
+        <dialog id="modal__create-dep">
+            <div class="modal__create-container">
+                <h2 class="title__createDep">Criar Departamento</h2>
+                <input type="text" placeholder="Nome do departamento" id="input__dep-name" />
+                <input type="text" placeholder="Descrição" id="input__dep-description" />
+                <select name="category" id="select__company-modal">
+                    <option value="">Selecionar Empresa</option>
+                </select>
+                <button class="button__modal-create" type="submit">Criar</button>
+            </div>
+        </dialog>
+
+        <dialog id="modal__edit-dep">
+            <div class="modal__edit-container">
+                <h2 class="title__updateDep">Editar Departamento</h2>
+                <input type="text" placeholder="Valores anteriores da descrição" id="input__newDescription"></input>
+                <button type="submit" class="button__modal-update">Salvar</button>
+            </div>
+
+        </dialog>
+
+        <dialog id="modal__delete-dep">
+
+        </dialog>
+
+        <dialog id="modal__view-dep">
+
+        </dialog>
+
+        <dialog id="modal__edit-user">
+
+        </dialog>
+        <dialog id="modal__delete-user">
+
+        </dialog>
+    </main>
+</body>
+
 </html>

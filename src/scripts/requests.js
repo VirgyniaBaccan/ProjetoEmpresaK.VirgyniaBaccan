@@ -1,4 +1,4 @@
-import { renderCards } from "./render.js"
+import { renderCards, renderDepCards } from "./render.js"
 import { toast } from "./toasts.js"
 
 const baseUrl = `http://localhost:3333/`
@@ -197,7 +197,7 @@ export async function getEmployeesProfile() {
                 headers: requestHeaders
         })
                 .then(response => response.json())
-        
+
         return employeeProfile
 }
 
@@ -206,7 +206,89 @@ export async function getDepartmentById(departmentId) {
                 method: 'GET',
                 headers: requestHeaders
         })
-        .then(response => response.json())
+                .then(response => response.json())
         return departmentById
 
+}
+
+export async function getAllDepartments() {
+        const allDepartments = await fetch(`${baseUrl}departments/readAll`, {
+                method: 'GET',
+                headers: requestHeaders
+        })
+                .then(response => response.json())
+
+        return allDepartments
+}
+
+export function changeDepSelect() {
+        const select = document.querySelector("#select__company")
+
+        select.addEventListener('change', async (event) => {
+                const selectValue = event.target.value
+                const allCompanies = await getAllCompanies()
+
+
+                if (selectValue == "") {
+                        renderDepCards(true)
+                } else {
+                        const filterCompanie = allCompanies.filter(element => element.name == selectValue)
+                        const companieId = filterCompanie[0].id
+                        const filteredDepartments = await getDepartmentByCompany(companieId)
+
+                        renderDepCards(false, filteredDepartments)
+                }
+        })
+
+
+}
+
+export async function getDepartmentByCompany(value) {
+        const departmentsFiltered = await fetch(`${baseUrl}departments/readByCompany/${value}`, {
+                method: 'GET',
+                headers: requestHeaders,
+        })
+                .then(async (response) => {
+                        const responseJson = await response.json()
+                        return responseJson
+                })
+        console.log(departmentsFiltered)
+        return departmentsFiltered
+}
+
+export async function createDepartments(newDep) {
+        const newDepartment = await fetch(`${baseUrl}departments/create`, {
+                method: 'POST',
+                headers: requestHeaders,
+                body: JSON.stringify(newDep)
+        })
+                .then(async (response) => {
+
+                        const responseJson = await response.json()
+
+                        return responseJson
+                })
+        return newDepartment
+}
+
+export async function getAllEmployees() {
+        const allEmployees = await fetch(`${baseUrl}employees/readAll`, {
+                method: 'GET',
+                headers: requestHeaders
+        })
+                .then(response => response.json())
+
+        return allEmployees
+}
+
+export async function updateDepartments(depId, updateBody) {
+        const department = await fetch(`${baseUrl}departments/update/${depId}`, {
+                method: 'PATCH',
+                headers: requestHeaders,
+                body: JSON.stringify(updateBody)
+        }).then(async (response) => {
+                const responseJson = await response.json()
+                return responseJson
+        })
+        return department
 }
