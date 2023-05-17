@@ -1,4 +1,4 @@
-import { renderSelectAdmin, renderDepCards, createEmployeeCard, handleCreateDepModal, renderUpdateModal } from "./render.js";
+import { renderSelectAdmin, renderDepCards, createEmployeeCard, handleCreateDepModal} from "./render.js";
 import { changeDepSelect, getAllEmployees } from "./requests.js";
 
 homeReturn()
@@ -7,17 +7,16 @@ authentication()
 
 await renderSelectAdmin()
 
-renderDepCards(true)
+await renderDepCards(true)
 
 await createEmployeeCard()
 
-changeDepSelect()
 
 function authentication() {
     const token = localStorage.getItem("@kenz.emp:token");
     const adm = JSON.parse(localStorage.getItem("isAdm"))
-
-
+    
+    
     if (!token) {
         location.replace("/index.html");
     } else if (adm !== true) {
@@ -38,4 +37,6 @@ handleCreateDepModal()
 
 getAllEmployees()
 
-renderUpdateModal()
+
+changeDepSelect()
+// renderUpdateModal()

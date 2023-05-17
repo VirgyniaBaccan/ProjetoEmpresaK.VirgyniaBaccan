@@ -1,6 +1,11 @@
-import { getAllCategories, getAllCompanies, getEmployeesProfile, getDepartmentById, getAllDepartments, createDepartments, getAllEmployees, updateDepartments } from "./requests.js";
+import { getAllCategories, getAllCompanies, getEmployeesProfile, getDepartmentById, getAllDepartments, createDepartments, getAllEmployees, updateDepartments, deleteDep } from "./requests.js";
+import { toast } from "./toasts.js";
 
 const baseUrl = `http://localhost:3333/`
+
+
+const green = '#36B37E';
+const red = '#FF5630';
 
 export async function renderSelect() {
     const categories = await getAllCategories()
@@ -144,6 +149,7 @@ export async function renderSelectAdmin() {
 
 export async function createDepCard(department) {
     const companies = await getAllCompanies()
+    // console.log(companies)
 
     const card = document.createElement("li")
     const divText = document.createElement("div")
@@ -153,18 +159,18 @@ export async function createDepCard(department) {
     const divButtons = document.createElement("div")
     const viewButton = document.createElement("img")
     const editButtonDep = document.createElement("img")
-    const deleteButton = document.createElement("img")
+    const deleteButtonDep = document.createElement("img")
 
-
-    const getCompanyName = companies.filter(company => company.id == department.company_id)
-    const companyName = getCompanyName[0].name
+    const filterCompany = companies.filter(company => company.id == department.company_id)
+    const companyName = filterCompany[0].name
+    // console.log(companyName)
 
     cardDepName.innerText = department.name
     cardDepDescription.innerText = department.description
     cardNameCia.innerText = companyName
     viewButton.src = "../assets/eye.vector.svg"
     editButtonDep.src = "../assets/pencil.vector.svg"
-    deleteButton.src = "../assets/trash.vector.svg"
+    deleteButtonDep.src = "../assets/trash.vector.svg"
 
     card.classList.add("card__container")
     cardDepName.classList.add("card__dep-name")
@@ -174,12 +180,45 @@ export async function createDepCard(department) {
     divButtons.classList.add("div__buttons")
     viewButton.classList.add("view__button")
     editButtonDep.classList.add("edit__button-dep")
-    deleteButton.classList.add("delete__button")
+    deleteButtonDep.classList.add("delete__button-dep")
     editButtonDep.id = department.id
+    viewButton.id = department.id
+    deleteButtonDep.id = department.id
+
 
     card.append(divText, divButtons)
     divText.append(cardDepName, cardDepDescription, cardNameCia)
-    divButtons.append(viewButton, editButtonDep, deleteButton)
+    divButtons.append(viewButton, editButtonDep, deleteButtonDep)
+    viewButton.addEventListener('click', () => {
+        const modalContainer = document.querySelector("#modal__view-dep")
+        modalContainer.showModal()
+        // modalView(department)
+    })
+
+    editButtonDep.addEventListener('click', () => {
+        const modalContainer = document.querySelector("#modal__edit-dep")
+        modalContainer.showModal()
+        // modalView(department)
+    })
+
+    deleteButtonDep.addEventListener('click', () => {
+        const modalContainer = document.querySelector("#modal__delete-dep")
+        modalContainer.showModal()
+
+        const depName = document.querySelector(".span__dep-name")
+        depName.innerText = department.name
+
+        const removeButton = document.querySelector(".modal__delete-button")
+        removeButton.addEventListener('click', async () => {
+            modalContainer.close()
+            await deleteDep(deleteButtonDep.id)
+          toast("Departamento deletado com sucesso", green)
+            setTimeout(() => {
+                window.location.replace("./adminPage.html")
+            }, 900);
+        })
+    })
+
     return card
 }
 
@@ -199,11 +238,12 @@ export async function renderDepCards(firstTime, array) {
     } else {
 
         array.forEach(async (element) => {
+            // console.log(element)
             const card = await createDepCard(element)
-
             list.appendChild(card)
         })
     }
+
 }
 
 async function renderModalCreateSelect() {
@@ -256,6 +296,7 @@ export function handleCreateDepModal() {
     })
 }
 
+
 export async function createEmployeeCard() {
     const companies = await getAllCompanies()
     const employees = await getAllEmployees()
@@ -268,14 +309,14 @@ export async function createEmployeeCard() {
             const cardEmployeeName = document.createElement("h1")
             const cardNameCia = document.createElement("p")
             const divButtons = document.createElement("div")
-            const editButton = document.createElement("img")
+            const editButtonEmp = document.createElement("img")
             const deleteButton = document.createElement("img")
 
 
             cardNameCia.innerText = "Usuário não contratado"
 
             cardEmployeeName.innerText = element.name
-            editButton.src = "../assets/pencil.vector.svg"
+            editButtonEmp.src = "../assets/pencil.vector.svg"
             deleteButton.src = "../assets/trash.vector.svg"
 
             card.classList.add("card__container")
@@ -283,14 +324,14 @@ export async function createEmployeeCard() {
             cardNameCia.classList.add("card__dep-text")
             divText.classList.add("div__text")
             divButtons.classList.add("div__buttons")
-            editButton.classList.add("edit__buttonEmp")
+            editButtonEmp.classList.add("edit__buttonEmp")
             deleteButton.classList.add("delete__button")
-            editButton.id = element.id
+            editButtonEmp.id = element.id
             deleteButton.id = element.id
 
             card.append(divText, divButtons)
             divText.append(cardEmployeeName, cardNameCia)
-            divButtons.append(editButton, deleteButton)
+            divButtons.append(editButtonEmp, deleteButton)
             list.appendChild(card)
             return card
         } else {
@@ -328,31 +369,20 @@ export async function createEmployeeCard() {
     })
 }
 
-export function renderUpdateModal() {
-    const modalUpdate = document.querySelector("#modal__edit-dep")
-    const buttonEdit = document.querySelectorAll(".edit__button-dep")
-    
-    buttonEdit.forEach(element => {
-        element.addEventListener('click', async () => {
-            modalUpdate.showModal()
 
-            const inputUpdate = document.querySelector("#input__newDescription")
-            const buttonUpdate = document.querySelector(".button__modal-update")
-            const departments = await getAllDepartments()
-            
-            
-            buttonUpdate.addEventListener('click', async () => {
-                const filterDep = departments.filter(department => department.id == element.id)
-                const nameDep = filterDep.name
-                const bodyUpdate = {
-                    description: inputUpdate.value,
-                    name: nameDep
-                } 
-                const id = element.id
-                await updateDepartments(id, bodyUpdate)
-                location.replace("../htmlPages/adminPage.html")
-                modalUpdate.close()
-            })
-        })
-    })
-}
+// export async function modalView(department, company) {
+//     const modal = document.querySelector("#modal__view-dep")
+//     const depName = document.querySelector(".dep__name")
+//     const depDescription = document.querySelector(".dep__description")
+//     const companyName = document.querySelector("company__name")
+//     const selectUserOf = document.querySelector(".select__user-modal")
+//     const option = document.createElement(option)
+
+//     depName = department.name
+//     depDescription = department.description
+//     companyName = company.name
+//     selectUserOf.innerHTML = ""
+//     option.innerHTML = option.value
+//     option.value = ""
+
+// }

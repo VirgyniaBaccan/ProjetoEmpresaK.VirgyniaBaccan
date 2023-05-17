@@ -233,14 +233,15 @@ export function changeDepSelect() {
                         renderDepCards(true)
                 } else {
                         const filterCompanie = allCompanies.filter(element => element.name == selectValue)
+                        // console.log(filterCompanie)
                         const companieId = filterCompanie[0].id
+                        // console.log(companieId)
                         const filteredDepartments = await getDepartmentByCompany(companieId)
+                        // console.log(filteredDepartments)
 
                         renderDepCards(false, filteredDepartments)
                 }
         })
-
-
 }
 
 export async function getDepartmentByCompany(value) {
@@ -252,7 +253,7 @@ export async function getDepartmentByCompany(value) {
                         const responseJson = await response.json()
                         return responseJson
                 })
-        console.log(departmentsFiltered)
+        // console.log(departmentsFiltered)
         return departmentsFiltered
 }
 
@@ -292,3 +293,46 @@ export async function updateDepartments(depId, updateBody) {
         })
         return department
 }
+
+// export async function getEmployeesOutOfWork() {
+//         const employeesOf = await fetch(`${baseUrl}employees/outOfWork`, {
+//                 method: 'GET',
+//                 headers: requestHeaders
+//         })
+//                 .then(response => response.json())
+//         // console.log(employeesOf)
+//         return employeesOf
+// }
+// getEmployeesOutOfWork()
+
+
+// export async function hireEmployee(employeeId, departmentId) {
+//         const hiredEmployee = await fetch(`${baseUrl}employees/hireEmployee/${employeeId}`, {
+//                 method: 'PATCH',
+//                 headers: requestHeaders,
+//                 body: JSON.stringify({departmentId})
+//         })
+//                 .then(async (response) => {
+//                         const responseJson = await response.json()
+//                         return responseJson
+//                 })
+//         return hiredEmployee
+// }
+// hireEmployee()
+
+export async function deleteDep(depId) {
+        const departmentDeleted = await fetch(`${baseUrl}departments/delete/${depId}`, {
+                method: 'DELETE',
+                headers: requestHeaders,
+        })
+                .then(async (response) => {
+                        const responseJson = await response.json()
+                        toast("Departamento deletado com sucesso", green)
+
+                        return responseJson
+                })
+        console.log(departmentDeleted)
+        return departmentDeleted
+}
+
+
