@@ -1,5 +1,6 @@
 body {
-    background-color: #FFFFFF;;
+    background-color: #FFFFFF;
+    ;
 }
 
 
@@ -111,7 +112,6 @@ button:hover {
 
 .title__company {
 
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
@@ -128,16 +128,18 @@ button:hover {
     flex-wrap: wrap;
     overflow: auto;
     max-height: 80%;
-    justify-content: space-between;
+    gap: 50px;
     align-items: flex-start;
-    margin: 30px;
+    justify-content: flex-start;
+    margin-top: 40px;
+    margin-left: 30px;
     height: 100%;
-    
+
 }
 
 .card__employee {
     box-sizing: border-box;
-    width: 300px;
+    width: 320px;
     height: 100px;
 
     background: #FFFFFF;
@@ -165,7 +167,7 @@ button:hover {
 
     background: #F8F8F8;
     border: 1px solid rgba(0, 0, 0, 0.2);
-   
+
 
 }
 

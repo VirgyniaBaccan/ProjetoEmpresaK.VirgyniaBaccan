@@ -1,8 +1,10 @@
-import { getAllCategories, getAllCompanies, getEmployeesProfile, getDepartmentById, getAllDepartments, createDepartments, getAllEmployees, updateDepartments, deleteDep } from "./requests.js";
+import { getAllCategories, getAllCompanies, getEmployeesProfile, getDepartmentById, getAllDepartments,
+createDepartments, getAllEmployees, updateDepartments, deleteDep, deleteEmployee, updateEmployee,
+getEmployeesOutOfWork, hireEmployee } from "./requests.js";
+
 import { toast } from "./toasts.js";
 
-const baseUrl = `http://localhost:3333/`
-
+// const baseUrl = `http://localhost:3333/`
 
 const green = '#36B37E';
 const red = '#FF5630';
@@ -149,7 +151,6 @@ export async function renderSelectAdmin() {
 
 export async function createDepCard(department) {
     const companies = await getAllCompanies()
-    // console.log(companies)
 
     const card = document.createElement("li")
     const divText = document.createElement("div")
@@ -163,7 +164,6 @@ export async function createDepCard(department) {
 
     const filterCompany = companies.filter(company => company.id == department.company_id)
     const companyName = filterCompany[0].name
-    // console.log(companyName)
 
     cardDepName.innerText = department.name
     cardDepDescription.innerText = department.description
@@ -185,23 +185,125 @@ export async function createDepCard(department) {
     viewButton.id = department.id
     deleteButtonDep.id = department.id
 
-
     card.append(divText, divButtons)
     divText.append(cardDepName, cardDepDescription, cardNameCia)
     divButtons.append(viewButton, editButtonDep, deleteButtonDep)
-    viewButton.addEventListener('click', () => {
+
+
+    viewButton.addEventListener('click', async () => {
+        const buttonCloseView = document.querySelector("#button__close-view")
+        buttonCloseView.addEventListener('click', () => {
+            modalContainer.close()
+        })
+
         const modalContainer = document.querySelector("#modal__view-dep")
         modalContainer.showModal()
-        // modalView(department)
+
+        const title = document.querySelector(".dep__name")
+        const description = document.querySelector(".dep__description")
+        const company = document.querySelector(".company__name")
+
+        company.innerText = companyName
+        title.innerText = department.name
+        description.innerText = department.description
+
+
+        renderSelectUsers()
+        const select = document.querySelector("#select__user-modal")
+        select.addEventListener('change', (event) => {
+            const selectValue = event.target.value
+            //    console.log(selectValue)
+
+            const bodyHire =
+            {
+                department_id: department.id
+            }
+
+            const buttonHire = document.querySelector(".button__modal-hire")
+            buttonHire.addEventListener('click', async () => {
+                await hireEmployee(selectValue, bodyHire)
+                toast('Usuário contratado com sucesso', green)
+                setTimeout(() => {
+                    location.reload()
+                }, 900);
+                
+            })
+        })
+        
+        const departments = await getDepartmentById(viewButton.id)
+        const employees = departments.employees
+    
+        if (employees.length !== 0) {
+            
+   
+            const list = document.querySelector(".list__modalView")
+            list.innerHTML = ""
+            const filterCompany = companies.filter(company => company.id == department.company_id)
+            const companyName = filterCompany[0].name
+            
+            employees.forEach( element => {
+                
+                const card = document.createElement("li")
+                const username = document.createElement("h2")
+                const buttonOff = document.createElement("button")
+
+                buttonOff.innerText = "Desligar"
+                username.innerText = element.name
+            
+                card.append(username, buttonOff, companyName)
+                list.appendChild(card)
+                
+                buttonOff.addEventListener('click', async () => {
+                    modalContainer.close()
+                    await deleteEmployee(element.id)
+                    toast("Usuário deletado com sucesso", green)
+                    setTimeout(() => {
+                        location.reload()
+                    }, 900);
+                })
+            })
+        }
+        
+
     })
 
     editButtonDep.addEventListener('click', () => {
+
+        const buttonCloseEdit = document.querySelector("#button__close-edit")
+        buttonCloseEdit.addEventListener('click', () => {
+            modalContainer.close()
+        })
+
         const modalContainer = document.querySelector("#modal__edit-dep")
         modalContainer.showModal()
-        // modalView(department)
+   
+        const editInput = document.querySelector("#input__newDescription")
+        const buttonSaveEdit = document.querySelector(".button__modal-update")
+        editInput.placeholder = department.description
+
+        buttonSaveEdit.addEventListener('click', async () => {
+            const bodyInput = {
+                description: editInput.value,
+                name: department.name
+            }
+            modalContainer.close()
+            await updateDepartments(department.id, bodyInput)
+            toast("Departamento editado com sucesso", green)
+            setTimeout(() => {
+                window.location.replace("./adminPage.html")
+            }, 900);
+        })
+
     })
 
     deleteButtonDep.addEventListener('click', () => {
+
+        const buttonCloseDelete = document.querySelector("#button__close-delete")
+        buttonCloseDelete.addEventListener('click', () => {
+            modalContainer.close()
+        })
+
+
         const modalContainer = document.querySelector("#modal__delete-dep")
         modalContainer.showModal()
 
@@ -212,7 +314,7 @@ export async function createDepCard(department) {
         removeButton.addEventListener('click', async () => {
             modalContainer.close()
             await deleteDep(deleteButtonDep.id)
-          toast("Departamento deletado com sucesso", green)
+            toast("Departamento deletado com sucesso", red)
             setTimeout(() => {
                 window.location.replace("./adminPage.html")
             }, 900);
@@ -296,13 +398,13 @@ export function handleCreateDepModal() {
     })
 }
 
-
 export async function createEmployeeCard() {
     const companies = await getAllCompanies()
     const employees = await getAllEmployees()
     const list = document.querySelector(".list__employees")
 
     employees.forEach(element => {
+
         if (element.company_id == null) {
             const card = document.createElement("li")
             const divText = document.createElement("div")
@@ -310,14 +412,14 @@ export async function createEmployeeCard() {
             const cardNameCia = document.createElement("p")
             const divButtons = document.createElement("div")
             const editButtonEmp = document.createElement("img")
-            const deleteButton = document.createElement("img")
+            const removeButtonEmp = document.createElement("img")
 
 
             cardNameCia.innerText = "Usuário não contratado"
 
             cardEmployeeName.innerText = element.name
             editButtonEmp.src = "../assets/pencil.vector.svg"
-            deleteButton.src = "../assets/trash.vector.svg"
+            removeButtonEmp.src = "../assets/trash.vector.svg"
 
             card.classList.add("card__container")
             cardEmployeeName.classList.add("card__dep-name")
@@ -325,23 +427,81 @@ export async function createEmployeeCard() {
             divText.classList.add("div__text")
             divButtons.classList.add("div__buttons")
             editButtonEmp.classList.add("edit__buttonEmp")
-            deleteButton.classList.add("delete__button")
+            removeButtonEmp.classList.add("modal__remove-buttonEmp")
             editButtonEmp.id = element.id
-            deleteButton.id = element.id
+            removeButtonEmp.id = element.id
 
             card.append(divText, divButtons)
             divText.append(cardEmployeeName, cardNameCia)
-            divButtons.append(editButtonEmp, deleteButton)
+            divButtons.append(editButtonEmp, removeButtonEmp)
             list.appendChild(card)
-            return card
+
+
+            removeButtonEmp.addEventListener('click', () => {
+
+                const buttonCloseDeleteUser = document.querySelector("#button__close-delete-user")
+                buttonCloseDeleteUser.addEventListener('click', () => {
+                    modalContainer.close()
+                })
+
+                const modalContainer = document.querySelector("#modal__delete-user")
+                modalContainer.showModal()
+
+                const UserName = document.querySelector(".span__user-name")
+                UserName.innerText = element.name
+
+                const removeButton = document.querySelector(".modal__remove-button")
+                removeButton.addEventListener('click', async () => {
+                    modalContainer.close()
+                    await deleteEmployee(removeButtonEmp.id)
+                    toast("Usuário deletado com sucesso", red)
+                    setTimeout(() => {
+                        window.location.replace("./adminPage.html")
+                    }, 900);
+                })
+            })
+
+
+            editButtonEmp.addEventListener('click', () => {
+
+                const buttonCloseEditUser = document.querySelector("#button__close-edit-user")
+                buttonCloseEditUser.addEventListener('click', () => {
+                    modalContainer.close()
+                })
+
+                const modalContainer = document.querySelector("#modal__edit-user")
+                modalContainer.showModal()
+                // modalView(department)
+
+                const editInputUserName = document.querySelector("#input__newNameUser")
+                const editInputUserMail = document.querySelector("#input__newMailUser")
+
+                const buttonSaveEditUser = document.querySelector(".button__modal-updateUser")
+
+                buttonSaveEditUser.addEventListener('click', async () => {
+                    const bodyInputUser = {
+                        name: editInputUserName.value,
+                        email: editInputUserMail.value
+                    }
+                    modalContainer.close()
+                    await updateEmployee(editButtonEmp.id, bodyInputUser)
+                    toast("Usuário editado com sucesso", green)
+                    setTimeout(() => {
+                        window.location.replace("./adminPage.html")
+                    }, 900);
+                })
+
+            })
+
+
         } else {
             const card = document.createElement("li")
             const divText = document.createElement("div")
             const cardEmployeeName = document.createElement("h1")
             const cardNameCia = document.createElement("p")
             const divButtons = document.createElement("div")
-            const editButton = document.createElement("img")
-            const deleteButton = document.createElement("img")
+            const editButtonEmp = document.createElement("img")
+            const removeButtonEmp = document.createElement("img")
 
 
             const getCompanyName = companies.filter(company => company.id == element.company_id)
@@ -349,40 +509,83 @@ export async function createEmployeeCard() {
 
             cardEmployeeName.innerText = element.name
             cardNameCia.innerText = companyName
-            editButton.src = "../assets/pencil.vector.svg"
-            deleteButton.src = "../assets/trash.vector.svg"
+            editButtonEmp.src = "../assets/pencil.vector.svg"
+            removeButtonEmp.src = "../assets/trash.vector.svg"
 
             card.classList.add("card__container")
             cardEmployeeName.classList.add("card__dep-name")
             cardNameCia.classList.add("card__dep-text")
             divText.classList.add("div__text")
             divButtons.classList.add("div__buttons")
-            editButton.classList.add("edit__button")
-            deleteButton.classList.add("delete__button")
+            editButtonEmp.classList.add("edit__button")
+            removeButtonEmp.classList.add("modal__remove-buttonEmp")
+            removeButtonEmp.id = element.id
+            editButtonEmp.id = element.id
 
             card.append(divText, divButtons)
             divText.append(cardEmployeeName, cardNameCia)
-            divButtons.append(editButton, deleteButton)
+            divButtons.append(editButtonEmp, removeButtonEmp)
             list.appendChild(card)
-            return card
+
+            removeButtonEmp.addEventListener('click', () => {
+                const modalContainer = document.querySelector("#modal__delete-user")
+                modalContainer.showModal()
+
+                const UserName = document.querySelector(".span__user-name")
+                UserName.innerText = element.name
+
+                const removeButton = document.querySelector(".modal__remove-button")
+                removeButton.addEventListener('click', async () => {
+                    modalContainer.close()
+                    await deleteEmployee(removeButtonEmp.id)
+                    toast("Usuário deletado com sucesso", red)
+                    setTimeout(() => {
+                        window.location.replace("./adminPage.html")
+                    }, 3000);
+                })
+            })
+
+            editButtonEmp.addEventListener('click', () => {
+                const modalContainer = document.querySelector("#modal__edit-user")
+                modalContainer.showModal()
+                // modalView(department)
+
+                const editInputUserName = document.querySelector("#input__newNameUser")
+                const editInputUserMail = document.querySelector("#input__newMailUser")
+                const buttonSaveEditUser = document.querySelector(".button__modal-updateUser")
+
+
+                buttonSaveEditUser.addEventListener('click', async () => {
+                    const bodyInputUser = {
+                        name: editInputUserName.value,
+                        email: editInputUserMail.value
+                    }
+                    modalContainer.close()
+                    await updateEmployee(editButtonEmp.id, bodyInputUser)
+                    toast("Usuário editado com sucesso", green)
+                    setTimeout(() => {
+                        window.location.replace("./adminPage.html")
+                    }, 900);
+                })
+
+            })
         }
+
     })
 }
 
+export async function renderSelectUsers() {
+    const employeesOf = await getEmployeesOutOfWork()
+    const select = document.querySelector("#select__user-modal")
+    select.innerHTML = ""
 
-// export async function modalView(department, company) {
-//     const modal = document.querySelector("#modal__view-dep")
-//     const depName = document.querySelector(".dep__name")
-//     const depDescription = document.querySelector(".dep__description")
-//     const companyName = document.querySelector("company__name")
-//     const selectUserOf = document.querySelector(".select__user-modal")
-//     const option = document.createElement(option)
+    employeesOf.forEach(element => {
 
-//     depName = department.name
-//     depDescription = department.description
-//     companyName = company.name
-//     selectUserOf.innerHTML = ""
-//     option.innerHTML = option.value
-//     option.value = ""
+        const option = document.createElement('option')
 
-// }
+        option.innerText = element.name
+        option.value = element.id
+
+        select.appendChild(option)
+    });
+}

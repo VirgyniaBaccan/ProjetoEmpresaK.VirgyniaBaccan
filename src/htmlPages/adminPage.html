@@ -53,6 +53,7 @@
         </div>
         <dialog id="modal__create-dep">
             <div class="modal__create-container">
+                <button class="button__closeModal" id="button__close-create">X</button>
                 <h2 class="title__createDep">Criar Departamento</h2>
                 <input type="text" placeholder="Nome do departamento" id="input__dep-name" />
                 <input type="text" placeholder="Descrição" id="input__dep-description" />
@@ -65,35 +66,55 @@
 
         <dialog id="modal__edit-dep">
             <div class="modal__edit-container">
+                <button class="button__closeModal" id="button__close-edit">X</button>
                 <h2 class="title__updateDep">Editar Departamento</h2>
-                <input type="text" placeholder="Valores anteriores da descrição" id="input__newDescription"></input>
+                <input type="text" id="input__newDescription"></input>
                 <button type="submit" class="button__modal-update">Salvar</button>
             </div>
 
         </dialog>
 
         <dialog id="modal__delete-dep">
-            <h2 class="modal__delete-tite">Realmente deseja remover o departamento <span class="span__dep-name">NOME</span> e demitir seus funcionários?</h2>
-            <button class="modal__delete-button">Remover</button>
-
+            <div class="modal__delete-container">
+                <button class="button__closeModal" id="button__close-delete">X</button>
+                <h2 class="modal__delete-tite">Realmente deseja remover o departamento <span
+                        class="span__dep-name">NOME</span> e demitir seus funcionários?</h2>
+                <button class="modal__delete-button">Remover</button>
+            </div>
         </dialog>
 
         <dialog id="modal__view-dep">
-            <h2 class="dep__name">Nome do Departamento</h2>
-            <h3 class="dep__description">Descrição do Departamento</h3>
-            <p class="company__name">Empresa pertencente</p>
-            <select name="category" id="select__user-modal">
-                <option value="">Selecionar Usuário</option>
-            </select>
-            <button type="submit" class="button__modal-hire">Contratar</button>
-
+            <div class="modal__view-container">
+                <button class="button__closeModal" id="button__close-view">X</button>
+                <h2 class="dep__name"></h2>
+                <h3 class="dep__description"></h3>
+                <p class="company__name">Empresa pertencente</p>
+                <select name="category" id="select__user-modal">
+                    <option value="">Selecionar Usuário</option>
+                </select>
+                <button type="submit" class="button__modal-hire">Contratar</button>
+                <ul class="list__modalView">
+                
+                </ul>
+            </div>
         </dialog>
 
         <dialog id="modal__edit-user">
-
+            <div class="modal__edit-user-container">
+                <button class="button__closeModal" id="button__close-edit-user">X</button>
+                <h2 class="title__updateEmp">Editar Usuário</h2>
+                <input type="text" id="input__newNameUser" placeholder="Nome"></input>
+                <input type="email" id="input__newMailUser" placeholder="E-mail"></input>
+                <button type="submit" class="button__modal-updateUser">Salvar</button>
+            </div>
         </dialog>
-        <dialog id="modal__delete-user">
 
+        <dialog id="modal__delete-user">
+            <div class="modal__delete-user-container">
+                <button class="button__closeModal" id="button__close-delete-user">X</button>
+                <h2 class="modal__delete-title">Realmente deseja remover o usuário <span class="span__user-name"></span>
+                    <button class="modal__remove-button">Remover</button>
+            </div>
         </dialog>
     </main>
 </body>

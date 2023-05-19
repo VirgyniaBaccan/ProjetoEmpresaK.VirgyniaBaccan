@@ -91,3 +91,29 @@
 button {
     outline: none;
 }
+
+.button__closeModal {
+    display: flex;
+    position: absolute;
+    top: 8%;
+    right: 3%;
+    justify-content: center;
+    align-items: center;
+    
+
+    width: 20px;
+    height: 20px;
+
+    background: var(--color-mode);
+    border: none;
+
+    color: var(--color-grey-2);
+    cursor: pointer;
+    
+}
+
+
+.button__closeModal:hover {
+    background-color: var(--color-grey-4);
+    color: var(--color-grey-2);
+}

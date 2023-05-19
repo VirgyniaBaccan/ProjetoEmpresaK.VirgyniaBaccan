@@ -294,30 +294,29 @@ export async function updateDepartments(depId, updateBody) {
         return department
 }
 
-// export async function getEmployeesOutOfWork() {
-//         const employeesOf = await fetch(`${baseUrl}employees/outOfWork`, {
-//                 method: 'GET',
-//                 headers: requestHeaders
-//         })
-//                 .then(response => response.json())
-//         // console.log(employeesOf)
-//         return employeesOf
-// }
+export async function getEmployeesOutOfWork() {
+        const employeesOf = await fetch(`${baseUrl}employees/outOfWork`, {
+                method: 'GET',
+                headers: requestHeaders
+        })
+                .then(response => response.json())
+        // console.log(employeesOf)
+        return employeesOf
+}
 // getEmployeesOutOfWork()
 
-
-// export async function hireEmployee(employeeId, departmentId) {
-//         const hiredEmployee = await fetch(`${baseUrl}employees/hireEmployee/${employeeId}`, {
-//                 method: 'PATCH',
-//                 headers: requestHeaders,
-//                 body: JSON.stringify({departmentId})
-//         })
-//                 .then(async (response) => {
-//                         const responseJson = await response.json()
-//                         return responseJson
-//                 })
-//         return hiredEmployee
-// }
+export async function hireEmployee(employeeId, departmentId) {
+        const hiredEmployee = await fetch(`${baseUrl}employees/hireEmployee/${employeeId}`, {
+                method: 'PATCH',
+                headers: requestHeaders,
+                body: JSON.stringify(departmentId)
+        })
+                .then(async (response) => {
+                        const responseJson = await response.json()
+                        return responseJson
+                })
+        return hiredEmployee
+}
 // hireEmployee()
 
 export async function deleteDep(depId) {
@@ -327,7 +326,7 @@ export async function deleteDep(depId) {
         })
                 .then(async (response) => {
                         const responseJson = await response.json()
-                        toast("Departamento deletado com sucesso", green)
+                        // toast("Departamento deletado com sucesso", green)
 
                         return responseJson
                 })
@@ -335,4 +334,28 @@ export async function deleteDep(depId) {
         return departmentDeleted
 }
 
+export async function deleteEmployee(userId) {
+        const userDeleted = await fetch(`${baseUrl}employees/deleteEmployee/${userId}`, {
+                method: 'DELETE',
+                headers: requestHeaders,
+        })
+                .then(async (response) => {
+                        const responseJson = await response.json()
+                        return responseJson
+                })
+        // console.log(userDeleted)
+        return userDeleted
+}
 
+
+export async function updateEmployee(userId, updateBodyEmp) {
+        const employee = await fetch(`${baseUrl}employees/updateEmployee/${userId}`, {
+                method: 'PATCH',
+                headers: requestHeaders,
+                body: JSON.stringify(updateBodyEmp)
+        }).then(async (response) => {
+                const responseJson = await response.json()
+                return responseJson
+        })
+        return employee
+}
