@@ -1,9 +1,9 @@
 #modal__create-dep {
-    width: 506px;
-    height: 402px;
+    width: 508px;
+    height: 405px;
     border: 1px solid transparent;
     outline: none;
-    
+
 }
 
 .modal__create-container {
@@ -12,10 +12,10 @@
     align-items: center;
     justify-content: space-evenly;
     gap: 10px;
-    width: 100%;
-    height: 100%;
+    width: 99%;
+    height: 99%;
     border: 1px solid transparent;
-   
+
 }
 
 .title__createDep {
@@ -24,8 +24,10 @@
     font-weight: 700;
     font-size: 36px;
     line-height: 54px;
-    
-    
+    align-self: flex-start;
+    margin-left: 35px;
+
+
     color: #000000;
 }
 
@@ -33,23 +35,33 @@
     width: 422px;
     height: 52px;
 
-
+    font-size: 17px;
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.3);
+    text-indent: 10px;
+}
+
+#input__dep-name::placeholder {
+    color: rgba(0, 0, 0, 0.5);
 }
 
 #input__dep-description {
-    
+
     width: 422px;
     height: 52px;
-
+    font-size: 17px;
 
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.3);
+    text-indent: 10px;
+}
+
+#input__dep-description::placeholder {
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .button__modal-create {
-    width: 422px;
+    width: 430px;
     height: 48px;
     background: #36B37E;
     border: 2px solid transparent;
@@ -67,25 +79,25 @@
 }
 
 .button__modal-create:hover {
-    background: #23825a;
+    background: #279a6a;
 }
 
 #select__company-modal {
     box-sizing: border-box;
-    width: 422px;
+    width: 429px;
     height: 52px;
 
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.3);
-    outline: none;
 
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 22px;
-   
+
     color: rgba(0, 0, 0, 0.5);
+    text-indent: 10px;
 }
 
 button {
@@ -95,25 +107,450 @@ button {
 .button__closeModal {
     display: flex;
     position: absolute;
-    top: 8%;
-    right: 3%;
+    top: 4%;
+    right: 2%;
     justify-content: center;
     align-items: center;
-    
+
 
     width: 20px;
     height: 20px;
 
-    background: var(--color-mode);
+    ;
     border: none;
 
     color: var(--color-grey-2);
     cursor: pointer;
-    
+
 }
 
 
 .button__closeModal:hover {
-    background-color: var(--color-grey-4);
-    color: var(--color-grey-2);
+    color: var(--color-grey-1);
+    background-color: var(--color-mode);
+}
+
+/* modal view */
+
+#modal__view-dep {
+    width: 800px;
+    height: 600px;
+    border: 1px solid transparent;
+    outline: none;
+
+}
+
+.modal__view-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    width: 95%;
+    margin-left: 20px;
+    margin-top: 3px;
+    height: 99%;
+    border: 1px solid transparent;
+}
+
+.dep__name {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 54px;
+
+    color: #000000;
+}
+
+.dep__description {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+
+    color: #000000;
+}
+
+.company__name {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+
+    color: #000000;
+}
+
+.div__select-user {
+    display: flex;
+    width: 97%;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#select__user-modal {
+    width: 565px;
+    height: 52px;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    text-indent: 10px;
+
+}
+
+.button__modal-hire {
+    width: 190px;
+    height: 52px;
+    background: #36B37E;
+    border: 2px solid transparent;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+.button__modal-hire:hover {
+    background: #279a6a;
+}
+
+.list__modalView {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 97%;
+    height: 240px;
+    overflow: auto;
+    padding: 20px;
+    max-width: 92%;
+    gap: 20px;
+
+    background: #F8F8F8;
+}
+
+.list__modalView::-webkit-scrollbar {
+    width: 260px;
+    height: 9px;
+}
+
+.list__modalView::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Cor do fundo da track */
+}
+
+.list__modalView::-webkit-scrollbar-thumb {
+    background-color: blue;
+    /* Cor do thumb (alça) */
+}
+
+.list__modalView::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(19, 19, 216);
+    cursor: pointer;
+    /* Cor do thumb (alça) ao passar o mouse */
+}
+
+.modal__view-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    height: 196px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #0000FF;
+    flex: 0 0 306px;
+}
+
+.card__username {
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    color: #000000;
+
+}
+
+.card__companyName {
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+
+    color: #000000;
+}
+
+.card__button {
+
+    box-sizing: border-box;
+    width: 230px;
+    height: 48px;
+    color: #FF5630;
+    border: 1px solid #FF5630;
+}
+
+.card__button:hover {
+    background-color: #FF5630;
+    color: var(--color-mode);
+}
+
+#modal__edit-dep {
+    width: 500px;
+    height: 350px;
+
+    background: #FFFFFF;
+    border: none;
+}
+
+.modal__edit-container {
+    display: flex;
+    width: 99%;
+    height: 99%;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.title__updateDep {
+    display: flex;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 54px;
+    align-self: flex-start;
+    margin: 36px;
+    color: #000000;
+}
+
+#input__newDescription {
+    display: flex;
+    box-sizing: border-box;
+    align-items: flex-start;
+    justify-content: center;
+    width: 422px;
+    height: 80px;
+    text-indent: 10px;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 21px;
+
+    color: #000000;
+}
+
+.button__modal-update {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 422px;
+    height: 52px;
+    background: #36B37E;
+    border: none;
+    color: var(--color-mode);
+}
+
+.button__modal-update:hover {
+    background: #279a6a;
+}
+
+#modal__delete-dep {
+    width: 730px;
+    height: 250px;
+
+    background: #FFFFFF;
+    border: none;
+}
+
+.modal__delete-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.modal__delete-tite {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 42px;
+    text-align: center;
+    margin-top: 60px;
+
+    color: #000000;
+}
+
+.modal__delete-button {
+    width: 422px;
+    height: 48px;
+    border: none;
+    background: #FF5630;
+    color: var(--color-mode);
+    cursor: pointer;
+}
+
+.modal__delete-button:hover {
+    background-color: #fa4c25;
+}
+
+
+#modal__edit-user {
+    width: 500px;
+    height: 350px;
+
+    background: #FFFFFF;
+    border: none;
+}
+
+.modal__edit-user-container {
+    display: flex;
+    width: 99%;
+    height: 99%;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.title__updateEmp {
+    display: flex;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 54px;
+    align-self: flex-start;
+    margin: 36px;
+    color: #000000;
+}
+
+#input__newNameUser {
+    display: flex;
+    box-sizing: border-box;
+    align-items: flex-start;
+    justify-content: center;
+    width: 422px;
+    height: 50px;
+    text-indent: 10px;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 21px;
+
+    color: #000000;
+}
+
+#input__newMailUser {
+    display: flex;
+    box-sizing: border-box;
+    align-items: flex-start;
+    justify-content: center;
+    width: 422px;
+    height: 50px;
+    text-indent: 10px;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 21px;
+
+    color: #000000;
+}
+
+.button__modal-updateUser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 422px;
+    height: 52px;
+    background: #36B37E;
+    border: none;
+    color: var(--color-mode);
+}
+
+.button__modal-updateUser:hover {
+    background: #279a6a;
+}
+
+#modal__delete-user {
+    width: 730px;
+    height: 250px;
+
+    background: #FFFFFF;
+    border: none;
+}
+
+.modal__delete-user-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    
+}
+
+
+.modal__delete-title {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 42px;
+    text-align: center;
+
+    color: #000000;
+}
+
+.modal__remove-button {
+    width: 422px;
+    height: 48px;
+    border: none;
+    background: #FF5630;
+    color: var(--color-mode);
+    cursor: pointer;
+}
+
+.modal__remove-button:hover {
+    background-color: #fa4c25;
 }

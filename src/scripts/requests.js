@@ -326,7 +326,6 @@ export async function deleteDep(depId) {
         })
                 .then(async (response) => {
                         const responseJson = await response.json()
-                        // toast("Departamento deletado com sucesso", green)
 
                         return responseJson
                 })
@@ -343,7 +342,6 @@ export async function deleteEmployee(userId) {
                         const responseJson = await response.json()
                         return responseJson
                 })
-        // console.log(userDeleted)
         return userDeleted
 }
 
@@ -358,4 +356,18 @@ export async function updateEmployee(userId, updateBodyEmp) {
                 return responseJson
         })
         return employee
+}
+
+export async function dismissEmployee(employee_id) {
+
+        const employeeDismiss = await fetch(`${baseUrl}employees/dismissEmployee/${employee_id}`, {
+                method: "PATCH",
+                headers: requestHeaders
+        })
+                .then(async res => {
+                        const responseJson = res.json()
+                        return responseJson
+                })
+
+        return employeeDismiss
 }

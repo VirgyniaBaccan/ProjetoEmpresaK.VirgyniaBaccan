@@ -158,12 +158,12 @@ button:hover {
     cursor: pointer;
 }
 
-.edit__button {
+.edit__button-dep {
     height: 25px;
     cursor: pointer;
 }
 
-.delete__button {
+.delete__button-dep {
     height: 25px;
     cursor: pointer;
 }
@@ -193,4 +193,12 @@ button:hover {
     margin-top: 50px;
 
     color: #000000;
+}
+
+.edit__buttonEmp {
+    cursor: pointer;
+}
+
+.modal__remove-buttonEmp {
+    cursor: pointer;
 }

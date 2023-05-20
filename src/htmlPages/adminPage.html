@@ -89,12 +89,14 @@
                 <h2 class="dep__name"></h2>
                 <h3 class="dep__description"></h3>
                 <p class="company__name">Empresa pertencente</p>
-                <select name="category" id="select__user-modal">
-                    <option value="">Selecionar Usuário</option>
-                </select>
-                <button type="submit" class="button__modal-hire">Contratar</button>
+                <div class="div__select-user">
+                    <select name="category" id="select__user-modal">
+                        <option value="">Selecionar Usuário</option>
+                    </select>
+                    <button type="submit" class="button__modal-hire">Contratar</button>
+                </div>
                 <ul class="list__modalView">
-                
+
                 </ul>
             </div>
         </dialog>
@@ -112,8 +114,8 @@
         <dialog id="modal__delete-user">
             <div class="modal__delete-user-container">
                 <button class="button__closeModal" id="button__close-delete-user">X</button>
-                <h2 class="modal__delete-title">Realmente deseja remover o usuário <span class="span__user-name"></span>
-                    <button class="modal__remove-button">Remover</button>
+                <h2 class="modal__delete-title">Realmente deseja remover o usuário <span class="span__user-name"></span></h2>
+                <button class="modal__remove-button">Remover</button>
             </div>
         </dialog>
     </main>
