@@ -22,10 +22,9 @@ function authenticationUser() {
 function loginChangePages() {
     const buttonHome = document.querySelector(".button__home")
     buttonHome.addEventListener('click', () => {
-        window.location.replace("index.html")
+        window.location.replace("/")
     })
 
-    
     const buttonRegister = document.querySelectorAll("#button__register")
     buttonRegister.forEach((button) => {
     button.addEventListener('click', () => {

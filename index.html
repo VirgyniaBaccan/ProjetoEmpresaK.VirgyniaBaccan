@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/cssPages/reset.css">
-    <link rel="stylesheet" href="./src/cssPages/globalStyles.css">
-    <link rel="stylesheet" href="./src/cssPages/index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/cssPages/reset.css" />
+    <link rel="stylesheet" href="./src/cssPages/globalStyles.css" />
+    <link rel="stylesheet" href="./src/cssPages/index.css" />
     <script defer type="module" src="./src/scripts/index.js"></script>
     <title>Home Page</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="header__container">
-        <nav class="nav__container">
-            <img src="./src/assets/logo.kenzie.svg" alt="logotipo" class="logo" />
-            <div>
-                <button class="button__login">Login</button>
-                <button class="button__register">Cadastro</button>
-            </div>
-        </nav>
+      <nav class="nav__container">
+        <img src="./src/assets/logo.kenzie.svg" alt="logotipo" class="logo" />
+        <div>
+          <button class="button__login">Login</button>
+          <button class="button__register">Cadastro</button>
+        </div>
+      </nav>
     </header>
     <main class="main__container">
-        <div class="div__image">
-            <img src="./src/assets/men.background.png" alt="Homem trabalhando" class="img__background" />
+      <div class="div__image">
+        <img
+          src="./src/assets/men.background.png"
+          alt="Homem trabalhando"
+          class="img__background"
+        />
+      </div>
+      <section class="section__select">
+        <select name="category" id="select">
+          <option value="">Selecionar Setor</option>
+        </select>
+        <div class="div__list">
+          <h1 class="list__title">Lista de Empresas</h1>
+          <ul class="list__home"></ul>
         </div>
-        <section class="section__select">
-
-            <select name="category" id="select">
-                <option value="">Selecionar Setor</option>
-            </select>
-            <div class="div__list">
-                <h1 class="list__title">Lista de Empresas</h1>
-                <ul class="list__home">
-
-
-                </ul>
-            </div>
-        </section>
+      </section>
     </main>
-
-</body>
-
+  </body>
 </html>
