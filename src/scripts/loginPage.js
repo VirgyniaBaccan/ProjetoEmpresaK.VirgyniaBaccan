@@ -22,7 +22,7 @@ function authenticationUser() {
 function loginChangePages() {
     const buttonHome = document.querySelector(".button__home")
     buttonHome.addEventListener('click', () => {
-        window.location.replace("/index.html")
+        window.location.replace("index.html")
     })
 
     

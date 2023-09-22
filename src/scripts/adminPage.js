@@ -29,7 +29,7 @@ function homeReturn() {
     buttonLogout.addEventListener('click', () => {
         localStorage.removeItem("@kenz.emp:token")
         localStorage.removeItem("isAdm")
-        window.location.replace("/index.html")
+        window.location.replace("./index.html")
     })
 }
 
@@ -39,4 +39,3 @@ getAllEmployees()
 
 
 changeDepSelect()
-// renderUpdateModal()
